@@ -1,7 +1,9 @@
 import debounce from "lodash.debounce";
 import Notiflix from 'notiflix';
 import './css/styles.css';
-import { MarkingOfInformationAboutCountries, countryDataMarkup, clearHTML } from './HTML-markup.js'
+import { MarkingOfInformationAboutCountries } from './HTML-markup.js'
+import { countryDataMarkup } from './HTML-markup.js'
+import { clearHTML } from './HTML-markup.js'
 import countriesAPI from './fetchCountries.js';
 
 const DEBOUNCE_DELAY = 300;
@@ -31,9 +33,15 @@ function onInputCountries(event) {
 				renderCountriesInfo(countries);
 			} else {
 				messageInfo(numberOfCountries);
-			}
+			};
 		})
-		.catch(error => messageError());
+		.catch(error => {
+			if (error.message) {
+				messageError();
+			};
+
+			console.log(error);
+		});
 };
 
 function renderInfoOfOneCountry(country) {

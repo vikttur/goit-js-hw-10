@@ -6,8 +6,6 @@ export default function fetchCountries(name) {
 		.then(response => {
 			if (response.ok) {
 				return response.json();
-			} else {
-				throw error(response.status);
 			};
 		});
 }
