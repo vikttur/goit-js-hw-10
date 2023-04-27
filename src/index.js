@@ -25,7 +25,7 @@ function onInputCountries(event) {
 
 	countriesAPI(name)
 		.then(countries => {
-			numberOfCountries = countries.length;
+			const numberOfCountries = countries.length;
 
 			if (numberOfCountries === 1) {
 				renderInfoOfOneCountry(countries);
